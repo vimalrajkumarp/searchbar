@@ -1,0 +1,36 @@
+<div class="login-page">
+    <div class="login-box">
+        <div class="login-header">
+            <p class="title">Find Your Trusted Expert in the UAE</p>
+            <p class="sub-title">Wizbizla connects expert with service providers they can trust</p>
+        </div>
+        <div class="login-body">
+            <fieldset>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <input
+                            id="typeahead-http"
+                            type="text"
+                            class="form-control"
+                            [class.is-invalid]="searchFailed"
+                            [(ngModel)]="model"
+                            [ngbTypeahead]="search"
+                            placeholder="search for 'rah'"
+                            (selectItem)="searchSelected = true"
+                        />
+                        <button class="btn btn-primary searchBtn" (click)="submitSearch(model)">Search</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" *ngIf="searchSelected" (click)="submitSearch(model)">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+            @if (searchFailed) {
+                <hr />
+                <div class="text-danger">Sorry, suggestions could not be loaded.</div>
+            }
+            
+            
+        </div>
+    </div>
+</div>
